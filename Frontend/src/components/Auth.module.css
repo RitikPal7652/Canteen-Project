@@ -1,0 +1,207 @@
+.authPage {
+  display: flex;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.leftSide {
+  flex: 1;
+  display: none;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .leftSide {
+    display: flex;
+  }
+}
+
+.leftSide h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: white;
+  z-index: 2;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.leftSide p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  z-index: 2;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.circle1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.circle2 {
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.rightSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.formCard {
+  width: 100%;
+  max-width: 450px;
+  background: var(--surface);
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.formCard h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  transition: all 0.3s;
+  background-color: var(--background);
+  color: var(--text-main);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.1);
+  background-color: var(--surface);
+}
+
+.submitBtn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+}
+
+.googleBtn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.googleBtn:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+  transform: translateY(-1px);
+}
+
+.googleIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.divider::before, 
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+.footerText {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--text-muted);
+}
+
+.link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

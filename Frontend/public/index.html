@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Placement Cell | Training & Placement Office</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #34495e;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-box h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+        }
+
+        /* Company Logos */
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .company-logo {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s;
+        }
+
+        .company-logo:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Notice Board */
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e1e8ed;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .notice-date {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .notice-content {
+            flex: 1;
+        }
+
+        .notice-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .notice-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .notice-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .notice-date {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏛️ Government Engineering College</h1>
+        <p>Training & Placement Cell</p>
+        <p style="font-size: 1rem; margin-top: 0.5rem;">Shaping Careers, Building Futures</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#statistics">Statistics</a></li>
+            <li><a href="#recruiters">Our Recruiters</a></li>
+            <li><a href="#notice">Notice Board</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>📋 About Placement Cell</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">The Training and Placement Cell (T&P) at Government Engineering College serves as a bridge between students and the corporate world. We strive to provide excellent placement opportunities and prepare students for successful careers.</p>
+            <p>Our dedicated team works tirelessly to bring the best companies to campus and ensure students are well-prepared for recruitment processes. We provide training in aptitude, technical skills, and soft skills to enhance employability.</p>
+            
+            <div class="stats-container" id="statistics">
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Students Placed</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p>Recruiting Companies</p>
+                </div>
+                <div class="stat-box">
+                    <h3>12 LPA</h3>
+                    <p>Highest Package</p>
+                </div>
+                <div class="stat-box">
+                    <h3>4.5 LPA</h3>
+                    <p>Average Package</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section>
+            <h2>🎯 Our Services</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>📊 Aptitude Training</h3>
+                    <p>Comprehensive training programs for quantitative aptitude, logical reasoning, and verbal ability.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>💻 Technical Workshops</h3>
+                    <p>Industry-aligned workshops on latest technologies and programming languages.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>🤝 Mock Interviews</h3>
+                    <p>Practice interviews with industry experts to boost confidence and improve performance.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="card">
+                    <h3>📝 Resume Building</h3>
+                    <p>Professional guidance to create impactful resumes and LinkedIn profiles.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Recruiters -->
+        <section id="recruiters">
+            <h2>🏢 Our Recruiters</h2>
+            <div class="company-grid">
+                <div class="company-logo">Microsoft</div>
+                <div class="company-logo">Google</div>
+                <div class="company-logo">Amazon</div>
+                <div class="company-logo">Infosys</div>
+                <div class="company-logo">TCS</div>
+                <div class="company-logo">Wipro</div>
+                <div class="company-logo">Accenture</div>
+                <div class="company-logo">IBM</div>
+                <div class="company-logo">Cognizant</div>
+                <div class="company-logo">Deloitte</div>
+            </div>
+        </section>
+
+        <!-- Notice Board -->
+        <section id="notice">
+            <h2>📢 Notice Board</h2>
+            <ul class="notice-list">
+                <li class="notice-item">
+                    <span class="notice-date">Mar 15, 2024</span>
+                    <div class="notice-content">
+                        <div class="notice-title">Campus Drive - Microsoft</div>
+                        <div class="notice-desc">Eligibility: 70% and above in 10th, 12th, and Graduation. Last date to register: March 20, 2024</div>
+                    </div>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">Mar 12, 2024</span>
+                    <div class="notice-content">
+                        <div class="notice-title">Aptitude Training Session</div>
+                        <div class="notice-desc">Mandatory training session for all final year students on March 18, 2024 at 10:00 AM in Seminar Hall</div>
+                    </div>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">Mar 10, 2024</span>
+                    <div class="notice-content">
+                        <div class="notice-title">Mock Interview Schedule</div>
+                        <div class="notice-desc">Mock interviews for CSE and IT students from March 22-25, 2024. Check notice board for your slot.</div>
+                    </div>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">Mar 8, 2024</span>
+                    <div class="notice-content">
+                        <div class="notice-title">Amazon Recruitment Drive</div>
+                        <div class="notice-desc">Online assessment test on March 28, 2024. Register before March 25, 2024.</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>📞 Contact Us</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">📍 Visit Us</h3>
+                    <p style="margin-bottom: 0.5rem;"><strong>Training & Placement Office</strong></p>
+                    <p>Government Engineering College</p>
+                    <p>Main Campus, Sector - 28</p>
+                    <p>City - 400001</p>
+                    
+                    <h3 style="color: #2c3e50; margin: 1.5rem 0 1rem;">📧 Email Us</h3>
+                    <p>placement@gec.edu</p>
+                    <p>training@gec.edu</p>
+                    
+                    <h3 style="color: #2c3e50; margin: 1.5rem 0 1rem;">📞 Call Us</h3>
+                    <p>TPO Office: +91 12345 67890</p>
+                    <p>Training Coordinator: +91 12345 67891</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">✉️ Send Message</h3>
+                    <form class="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Government Engineering College - Training & Placement Cell. All rights reserved.</p>
+        <p>Designed and maintained by TPO Office</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">FAQ</a>
+        </p>
+    </footer>
+    
+</body>
+</html>

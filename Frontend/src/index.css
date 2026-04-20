@@ -1,0 +1,150 @@
+:root {
+  --primary: #FF5A5F;
+  --primary-hover: #FC4B51;
+  --primary-light: #FF8F92;
+  --secondary: #00A699;
+  --background: #F7F9FC;
+  --surface: #FFFFFF;
+  --text-main: #222222;
+  --text-muted: #717171;
+  --border: #EBEBEB;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+/* Layout Utilities */
+.page-container {
+  min-height: calc(100vh - 80px); /* considering navbar height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glass Navbar OVERRIDE Bootstrap */
+nav.navbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: none !important;
+  padding: 1rem 2rem !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  font-family: var(--font-family);
+  font-weight: 600 !important;
+  font-size: 1.05rem;
+  color: var(--text-main) !important;
+  margin: 0 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+/* Button Stylings */
+.btn-primary-custom {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 28px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 90, 95, 0.4);
+}
+
+.btn-secondary-custom {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 26px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-custom:hover {
+  background-color: rgba(255, 90, 95, 0.1);
+}
+
+/* Card Overrides */
+.card-custom {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.DS_Store
+coverage/
+*.log
+
+# Frontend specific
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.eslintcache
+
+# Backend specific
+Backend/node_modules/
+Backend/.env
