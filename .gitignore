@@ -11,5 +11,5 @@ Frontend/dist/
 Frontend/.eslintcache
 
 # Backend specific
-Backend/node_modules/
-Backend/.env
+api/node_modules/
+api/.env
