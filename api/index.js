@@ -1,5 +1,10 @@
 //1. Core packages
 import express, { urlencoded } from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import cors from 'cors';
 import dotenv from 'dotenv'; 
 import authRouter from "./routes/authRoutes.js";
@@ -16,7 +21,7 @@ const app = express();
 
 app.use(
   cors({
-    origin : "http://localhost:5173",
+    origin: true,
     credentials: true,
   })
 )
@@ -39,6 +44,14 @@ app.use("/api/orders", orderRoutes);
 
 app.use("/food", foodRoutes);
 app.use("/orders", orderRoutes);
+
+// --- Serve Frontend Statically for Render ---
+app.use(express.static(path.join(__dirname, '../Frontend/dist')));
+
+// SPA Fallback: Any unknown route (not covered by /api) should serve index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Frontend/dist/index.html'));
+});
 //Get the value of the variable named PORT from my environment
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{

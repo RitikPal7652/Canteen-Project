@@ -5,7 +5,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd api && npm run dev",
     "client": "cd Frontend && npm run dev",
-    "build": "cd Frontend && npm install && npm run build"
+    "build": "npm install && cd Frontend && npm install && npm run build && cd ../api && npm install",
+    "start": "cd api && node index.js"
   },
   "dependencies": {
     "firebase": "^12.10.0"
