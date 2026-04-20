@@ -48,7 +48,7 @@ const Cart = () => {
         }))
       };
 
-      const res = await axios.post("http://localhost:3000/orders/place", orderData, {
+      const res = await axios.post("/api/orders/place", orderData, {
         withCredentials: true
       });
       

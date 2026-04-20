@@ -9,7 +9,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/admin/dashboard", {
+        const res = await axios.get("/api/admin/dashboard", {
           withCredentials: true,
         });
         if (res.data.success) {

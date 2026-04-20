@@ -25,16 +25,24 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(urlencoded({extended: true}));
 
+app.use("/api/auth", authRouter);
+app.use("/api/admin", adminRoutes);
+
 app.use("/auth", authRouter);
 app.use("/admin", adminRoutes);
 
 import foodRoutes from "./routes/foodRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
+app.use("/api/food", foodRoutes);
+app.use("/api/orders", orderRoutes);
+
 app.use("/food", foodRoutes);
 app.use("/orders", orderRoutes);
 //Get the value of the variable named PORT from my environment
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
   console.log(`Server is running on PORT ${PORT}`)
 })
+
+export default app;

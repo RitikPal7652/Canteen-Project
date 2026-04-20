@@ -27,7 +27,7 @@ export const SignUp = () => {
     const formData = { username: name, email, password };
 
     try {
-      const res = await axios.post("http://localhost:3000/auth/signup", formData, {
+      const res = await axios.post("/api/auth/signup", formData, {
         withCredentials: true
       });
 
@@ -55,7 +55,7 @@ export const SignUp = () => {
       
       const formData = { email: user.email, name: user.displayName || user.email.split("@")[0] };
 
-      const res = await axios.post("http://localhost:3000/auth/google", formData, { withCredentials: true });
+      const res = await axios.post("/api/auth/google", formData, { withCredentials: true });
 
       if (res.status === 201 || res.status === 200) {
         navigate("/");
