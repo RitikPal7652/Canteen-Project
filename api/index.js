@@ -12,7 +12,10 @@ import cookieParser from "cookie-parser";
 import adminRoutes from './routes/adminRoutes.js';
 import connectDB from './config/db.js';
 
-dotenv.config();
+// Only load .env in development mode
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 //mongodb connection establishment
 connectDB();
