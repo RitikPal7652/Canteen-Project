@@ -1,32 +1,29 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
-  // Point to persistent MongoDB storage server
-  // Defaults to localhost port 27017 for MongoDB installation
-  const uri = process.env.MONGO_URI && !process.env.MONGO_URI.includes('admin123@cluster0')
-    ? process.env.MONGO_URI
-    : "mongodb://127.0.0.1:27017/canteenDB";
+  // Use MONGO_URI from environment, otherwise default to localhost
+  const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/canteenDB";
 
   const db = mongoose.connection;
   
   db.on('connected', () => {
-    console.log(`✅ Mongodb connected successfully to Persistent Storage!`);
+    console.log(`✅ Mongodb connected successfully!`);
   });
   
   db.on('error', (err) => {
-    console.log('❌ Mongodb connection failed', err.message);
-    console.log('----------------------------------------------------');
-    console.log('💡 PLEASE START YOUR LOCAL MONGODB SERVER!');
-    console.log('   Since you wanted data to be stored persistently,');
-    console.log('   make sure MongoDB is running on your machine.');
-    console.log('----------------------------------------------------');
+    console.log('❌ Mongodb connection error:', err.message);
   });
   
   try {
-    await mongoose.connect(uri);
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    });
   } catch (err) {
-    console.log('❌ Mongodb connection crashed:', err.message);
-    process.exit(1);
+    console.log('⚠️ MongoDB connection failed:', err.message);
+    console.log('📌 On Render: Set MONGO_URI environment variable');
+    console.log('📌 Locally: Make sure MongoDB is running on localhost:27017');
+    // Don't exit - let the app start anyway and handle DB errors at runtime
   }
 }
 
